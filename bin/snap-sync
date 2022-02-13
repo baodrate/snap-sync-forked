@@ -513,7 +513,6 @@ for x in $selected_configs; do
 done
 
 printf "\nDone!\n"
-exec 3>&-
 
 if [[ "$uuid_cmdline" != "none" ]]; then
     notify_info "Finished" "Backups to $uuid_cmdline complete!"
