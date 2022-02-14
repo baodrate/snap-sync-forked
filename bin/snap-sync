@@ -37,12 +37,12 @@ printf "snap-sync comes with ABSOLUTELY NO WARRANTY. This is free software, and 
 SNAPPER_CONFIG=/etc/conf.d/snapper
 
 donotify=0
-if ! which notify-send &> /dev/null; then
+if ! command -v notify-send &> /dev/null; then
     donotify=1
 fi
 
 doprogress=0
-if ! which pv &> /dev/null; then
+if ! command -v pv &> /dev/null; then
     doprogress=1
 fi
 

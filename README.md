@@ -53,7 +53,6 @@ The dependencies below are Arch Linux package names. Packages on other distros m
 * snapper
 * systemd
 * util-linux
-* which
 
 ### Optional dependencies:
 
