@@ -37,12 +37,12 @@ printf "snap-sync comes with ABSOLUTELY NO WARRANTY. This is free software, and 
 SNAPPER_CONFIG=/etc/conf.d/snapper
 
 donotify=0
-if ! which notify-send &> /dev/null; then
+if ! command -v notify-send &> /dev/null; then
     donotify=1
 fi
 
 doprogress=0
-if ! which pv &> /dev/null; then
+if ! command -v pv &> /dev/null; then
     doprogress=1
 fi
 
@@ -84,7 +84,7 @@ Options:
  -n, --noconfirm          do not ask for confirmation
  -k, --keepold            keep old incremental snapshots instead of deleting them
                           after backup is performed
- -p, --port <port>        remote port; wsed with '--remote'.
+ -p, --port <port>        remote port; used with '--remote'.
  -q, --quiet              do not send notifications; instead print them.
  -r, --remote <address>   ip address of a remote machine to backup to
  --sudo                   use sudo on the remote machine
@@ -181,6 +181,12 @@ description=${description:-"latest incremental backup"}
 uuid_cmdline=${uuid_cmdline:-"none"}
 subvolid_cmdline=${subvolid_cmdline:-"5"}
 noconfirm=${noconfirm:-"no"}
+
+if [[ -z $remote ]]; then
+    if ! command -v rsync &> /dev/null; then
+        die "--remote specified but rsync command not found"
+    fi
+fi
 
 if [[ "$uuid_cmdline" != "none" ]]; then
     if [[ -z $remote ]]; then
