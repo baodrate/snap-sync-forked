@@ -51,7 +51,6 @@ The dependencies below are Arch Linux package names. Packages on other distros m
 * gawk
 * grep
 * snapper
-* systemd
 * util-linux
 
 ### Optional dependencies:
