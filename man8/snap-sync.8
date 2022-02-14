@@ -145,7 +145,7 @@ You can create systemd unit and timer. Here is an example service:
     Type=simple
     ExecStart=/usr/bin/snap-sync --UUID 7360922b-c916-4d9f-a670-67fe0b91143c --subvolid 5 --noconfirm --quiet
     IOSchedulingClass=idle
-    CPUSchedulingPolicy=idle
+    Nice=19
     
     [Install]
     WantedBy=multi-user.target
