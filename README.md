@@ -47,11 +47,11 @@ The dependencies below are Arch Linux package names. Packages on other distros m
 
 * bash
 * btrfs-progs
-* coreutils
+* coreutils (for `cat`/`cp`/`sync`)
 * gawk
 * grep
 * snapper
-* util-linux
+* util-linux (for `findmnt`)
 
 ### Optional dependencies:
 
