@@ -333,7 +333,9 @@ for x in $selected_configs; do
                 fi
             done
             if [[ "$delete_failed" == [Yy]"es" || "$delete_failed" == [Yy] ]]; then
-                snapper -c "$x" delete "$(snapper -c "$x" list --disable-used-space | awk '/'$name' backup in progress/ {print $1}')"
+                # explicit split list of snapshots (on whitespace) into multiple arguments
+                # shellcheck disable=SC2046
+                snapper -c "$x" delete $(snapper -c "$x" list --disable-used-space | awk '/'$name' backup in progress/ {print $1}')
             fi
         fi
     fi
