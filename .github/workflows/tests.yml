@@ -1,0 +1,27 @@
+# your-repo-name/.github/workflows/first_workflow.yml
+name: Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # used to shellcheck 'source' commands
+    - name: Install snapper
+      run: |
+        sudo apt-get -y install snapper
+        command -v snapper
+
+    - name: Run ShellCheck
+      uses: ludeeus/action-shellcheck@master
+      env:
+        SHELLCHECK_OPTS: -x
