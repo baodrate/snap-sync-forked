@@ -289,7 +289,7 @@ else
     printf "The disk is mounted at '%s:%s'.\n" "$remote" "$selected_mnt"
 fi
 
-# shellcheck source=/etc/conf.d/snapper
+# shellcheck source=/etc/default/snapper
 source "$SNAPPER_CONFIG"
 
 if [[ -z $selected_configs ]]; then
@@ -341,7 +341,7 @@ for x in $selected_configs; do
     SNAP_SYNC_EXCLUDE=no
 
     if [[ -f "/etc/snapper/configs/$x" ]]; then
-        # shellcheck source=/usr/share/snapper/config-templates/default
+        # shellcheck source=/etc/snapper/config-templates/default
         source "/etc/snapper/configs/$x"
     else
         die "Selected snapper configuration $x does not exist."
@@ -432,7 +432,7 @@ for x in $selected_configs; do
     SNAP_SYNC_EXCLUDE=no
 
     if [[ -f "/etc/snapper/configs/$x" ]]; then
-        # shellcheck source=/usr/share/snapper/config-templates/default
+        # shellcheck source=/etc/snapper/config-templates/default
         source "/etc/snapper/configs/$x"
     else
         die "Selected snapper configuration $x does not exist."
